@@ -1,0 +1,27 @@
+schema_version = "1.4"
+
+[task]
+name = "aidlc/expense-totals"
+version = "1.0.0"
+
+[metadata]
+difficulty = "easy"
+category = "programming"
+tags = ["aidlc", "decimal", "validation", "offline", "python"]
+idea = "Build an offline expense summarizer with exact decimal totals and useful validation errors."
+expected_capabilities = ["exact decimal total", "category totals", "validation", "independent requests"]
+forbidden_behaviors = ["network", "file persistence", "external dependencies", "shell execution"]
+scoring = "1 only when every acceptance test passes; otherwise 0"
+
+[agent]
+timeout_sec = 300
+
+[verifier]
+timeout_sec = 30
+
+[environment]
+build_timeout_sec = 120
+cpus = 1
+memory_mb = 512
+storage_mb = 1024
+network_mode = "no-network"

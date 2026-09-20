@@ -1,0 +1,87 @@
+{
+  "realm": "aidlc",
+  "enabled": true,
+  "sslRequired": "none",
+  "accessTokenLifespan": 300,
+  "registrationAllowed": false,
+  "defaultDefaultClientScopes": [],
+  "defaultOptionalClientScopes": [],
+  "clientScopes": [
+    {
+      "name": "analysis:run",
+      "protocol": "openid-connect",
+      "attributes": {"include.in.token.scope": "true", "display.on.consent.screen": "true"},
+      "protocolMappers": [
+        {
+          "name": "aidlc-tools-audience",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "config": {
+            "included.custom.audience": "http://127.0.0.1:8002/mcp",
+            "access.token.claim": "true",
+            "id.token.claim": "false"
+          }
+        }
+      ]
+    },
+    {
+      "name": "analysis:read",
+      "protocol": "openid-connect",
+      "attributes": {"include.in.token.scope": "true", "display.on.consent.screen": "true"},
+      "protocolMappers": [
+        {
+          "name": "aidlc-tools-audience",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "config": {
+            "included.custom.audience": "http://127.0.0.1:8002/mcp",
+            "access.token.claim": "true",
+            "id.token.claim": "false"
+          }
+        }
+      ]
+    }
+  ],
+  "clients": [
+    {
+      "clientId": "static-analysis-agent",
+      "enabled": true,
+      "protocol": "openid-connect",
+      "publicClient": false,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "${AIDLC_MCP_CLIENT_SECRET}",
+      "serviceAccountsEnabled": true,
+      "standardFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "fullScopeAllowed": false,
+      "defaultClientScopes": [],
+      "optionalClientScopes": ["analysis:run", "analysis:read"]
+    },
+    {
+      "clientId": "planning-agent",
+      "enabled": true,
+      "protocol": "openid-connect",
+      "publicClient": false,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "${AIDLC_PLANNING_CLIENT_SECRET}",
+      "serviceAccountsEnabled": true,
+      "standardFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "fullScopeAllowed": false,
+      "defaultClientScopes": [],
+      "optionalClientScopes": [],
+      "protocolMappers": [
+        {
+          "name": "negative-test-resource-audience",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "config": {
+            "included.custom.audience": "http://127.0.0.1:8002/mcp",
+            "access.token.claim": "true",
+            "id.token.claim": "false"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "runsc": {
+    "version": "release-20260907.0",
+    "platform": "linux/amd64",
+    "url": "https://storage.googleapis.com/gvisor/releases/release/20260907.0/x86_64/gvisor.tar.bz2",
+    "algorithm": "sha512",
+    "digest": "c38cc38ee709d862501e55eebd99f5bd105899cbc7cf3fa1f620493fa127364c5b74c7361d231bd8b9523be48918ea3820dd40b28c61c2b2cb644edbf10261fb",
+    "checksum_source": "https://storage.googleapis.com/gvisor/releases/release/20260907.0/x86_64/gvisor.tar.bz2.sha512"
+  },
+  "kata": {
+    "version": "4.2.0",
+    "platform": "linux/amd64",
+    "url": "https://github.com/kata-containers/kata-containers/releases/download/4.2.0/kata-static-4.2.0-amd64.tar.zst",
+    "algorithm": "sha256",
+    "digest": "b828904fa3f1e49ddd7dc799c72cb1503cd1e772d354c3987c8d4189b2a623a8",
+    "checksum_source": "https://github.com/kata-containers/kata-containers/releases/expanded_assets/4.2.0"
+  }
+}

@@ -1,0 +1,27 @@
+schema_version = "1.4"
+
+[task]
+name = "aidlc/task-list"
+version = "1.0.0"
+
+[metadata]
+difficulty = "easy"
+category = "programming"
+tags = ["aidlc", "validation", "offline", "python"]
+idea = "Build a tiny offline task list that accepts JSON commands and explains invalid input."
+expected_capabilities = ["add", "list", "complete", "validation", "process-local state"]
+forbidden_behaviors = ["network", "file persistence", "external dependencies", "shell execution"]
+scoring = "1 only when every acceptance test passes; otherwise 0"
+
+[agent]
+timeout_sec = 300
+
+[verifier]
+timeout_sec = 30
+
+[environment]
+build_timeout_sec = 120
+cpus = 1
+memory_mb = 512
+storage_mb = 1024
+network_mode = "no-network"

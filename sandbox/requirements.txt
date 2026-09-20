@@ -1,0 +1,2 @@
+# amd64 manylinux wheel; same SHA-256 as uv.lock.
+ruff==0.16.7 --hash=sha256:9ce7f8f22df67c93ed96c717f9128eadb797144ac2bad475cf536f31d6100c55

@@ -1,0 +1,62 @@
+[project]
+name = "multi-agents-aidlc"
+version = "0.6.0"
+description = "A learning-first, multi-agent AI-driven development lifecycle"
+readme = "README.md"
+requires-python = ">=3.14,<3.15"
+dependencies = [
+    "a2a-sdk[http-server]==1.1.2",
+    "httpx>=0.28,<0.29",
+    "fastapi[standard]==0.141.1",
+    "pydantic==2.13.5",
+    "python-dotenv==1.2.3",
+    "deepagents==0.7.14",
+    "langgraph==1.2.11",
+    "mcp==2.2.0",
+    "pyjwt[crypto]==2.12.1",
+    "ruff==0.16.7",
+    "langchain-groq==1.1.3",
+    "langchain-openai==1.6.2",
+]
+
+[dependency-groups]
+dev = [
+    "httpx>=0.28,<0.29",
+    "pytest==9.1.1",
+    "pyright==1.1.414",
+    "ruff==0.16.7",
+]
+
+[project.scripts]
+aidlc-api = "aidlc.main:run"
+aidlc-agents = "aidlc.a2a.server:run"
+aidlc-tools = "aidlc.tools.server:run"
+aidlc-analyze = "aidlc.tools.client:run"
+aidlc-sandbox = "aidlc.sandbox.cli:run"
+aidlc-evaluate = "aidlc.evaluation.cli:run"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/aidlc"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py314"
+extend-exclude = [".tools"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "ASYNC"]
+
+[tool.pyright]
+include = ["src", "tests"]
+venvPath = "."
+venv = ".venv"
+pythonVersion = "3.14"
+typeCheckingMode = "standard"

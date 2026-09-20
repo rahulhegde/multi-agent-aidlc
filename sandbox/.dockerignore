@@ -1,0 +1,9 @@
+*
+!Dockerfile
+!requirements.txt
+!worker.py
+!react/
+!react/package.json
+!react/package-lock.json
+!react/vite.config.mjs
+!react/tsconfig.json
