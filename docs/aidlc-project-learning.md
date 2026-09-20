@@ -1,6 +1,6 @@
 # GitHub Copilot Analysis: current AIDLC implementation
 
-This document captures the lifecycle that is actually implemented in the repository today, close to the code paths in the backend and the agent catalog. It is meant to align the learning plan in `aidlc-learning-architecture.md` with the working implementation that exists in the codebase.
+This document captures the lifecycle that is actually implemented in the repository today, close to the code paths in the backend and the agent catalog. It expands on the learning architecture summarized in the root `README.md`.
 
 ## Source of truth in code
 
@@ -143,7 +143,7 @@ The implementation is centered on:
 
 - `evaluation/harbor/tasks` — task definitions for benchmark scenarios such as `task-list` and `expense-totals`
 - `tests/test_harbor_dataset.py` — verifies that trusted oracle implementations pass and broken implementations fail
-- `docs/implementation-milestone.md` — documents the Harbor task layout, verifier flow, and environment constraints
+- `README.md` — summarizes the Harbor experiment, verifier role, and evaluation boundaries
 
 Each Harbor task contains a one-line idea, explicit capabilities and forbidden behaviors, resource limits, a pinned Python environment, acceptance tests, and an oracle solution. The verifier runs the candidate app against these tests and writes the reward to `/logs/verifier/reward.txt` with a value of `1` when all acceptance tests succeed, otherwise `0`. In the repo, this is exercised in `test_harbor_verifiers_reward_oracles_and_reject_broken_implementations()`, which confirms the same contract in a deterministic test harness.
 
@@ -746,7 +746,7 @@ The orchestration uses:
 - A2A delegation to specialist agents
 - one hub-owned workflow database
 
-This is the current implementation model and is the concrete foundation behind the learning architecture described in `aidlc-learning-architecture.md`.
+This is the current implementation model and is the concrete foundation behind the learning architecture described in the root `README.md`.
 
 ---
 
